@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num=1;//let 데이터의 범위를 지정(let, var, const)
+                    //num은 숫자형 변수가 됨 js에서 숫자형은 number;
+        
+        console.log(typeof num);//변수의 타입을 알려주는 키워드:typeof
+        
+        let result =((1+1)==(1+2));
+
+        let data;//undefined:변수를 만들고 데이터를 한 번도 넣지 않음;
+                //null은 변수 공간을 청소하지 않은 상태(쓰레기값)
+
+        //NaN(not a number):문자를 숫자로 바꿀 수 있다.예'1'(0)'javascript'(x)
+        let str1='java';
+        console.log(typeof str1)
+        let num1 = Number(str1);
+        console.log(num1);//NaN이 나옴
+
+   ///////////////////////////////////////////////////////////////////////////
+
+        //표현식이란?
+        //프로그래밍의 최소단위(단어, 데이터)
+        //예: 10 , const , + ...
+
+
+        //문장이란?
+        //단어와 데이터등의 집합체
+        //예:console.log('안녕'); , 10+10;
+
+
+        //프로그램이란?
+        //문장들의 집합체
+
+
+        //키워드(예약어)란?
+        //해당 언어에서 어떤 기능을 갖도록 설정한 단어
+
+
+        //주석이란?
+        //공부 내용 정리
+        //협업에서 다른 사람에게 알려줄 때 쓰임
+
+
+        //출력이란?
+        //자신의 코드가 잘 작동되는 지 확인할 때 많이 쓰임(콘솔창에서)
+
+
+        //데이터(원시형 데이터타입/참조형데이터타입)
+        
+        //원시형:숫자, 문자, 불리언(bool),null,undefined, NaN
+        //참조형:
+
+//////////////////////////////////////////////////////////////
+
+        //형변환(숫자>문자, 문자<숫자)
+        Number()
+        //소수점 포함해서 변환, 문자 포함 시(NaN)이 뜸
+        parseInt(); parseFloat();
+        //문자가 있으면 문자를 제외하고 숫자로 변환
+        
+        toString();
+        String();
+        num3=null;
+        let str4=String(num3);
+        console.log(typeof str4);
+        console.log(str4);
+        ///////////////////////////////////////////////////////////
+
+        //변수 원칙
+        //1.숫자로 시작x
+        //2.공백x
+        //3.대소문자구별
+        //4.띄어쓰기첫글자는대문자(카멜표기법or_쓰기(스네이크표기법), 나머지는 소문자
+        //5.키워드(예약어)는 불가능
+
+        ///////////////////////////////////////////////////////////////////////////
+        //let, var, const :변수의 사용범위(scope)
+        //{}안에서 생성되고 벗어나면 사라지지만, var는 예외적으로 중괄호 밖에서도 쓸 수 있다
+        var text1=1;//var:어디서든 사용가능(script내에서 위치와 상관없이 사용가능. var를 선언하기 전 줄에서도 사용ㄱㄴ
+                                            //초기화를 하지 않으면 undifined가 뜨겟지망...)
+        let test2=1;//let:선언 후에만 사용ㄱㄴ
+        num=1;//num은 숫자형
+        num='123';//num은 문자형 : js에서는 가능한~일~
+    </script>
+</body>
+</html>

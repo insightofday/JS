@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /////////연산자//////
+
+        //(단항(증감연산자:++,--), 이항, 삼항):피연산자의 갯수에 따라 구분
+        //나머지연산 : !!모듈러!!연산
+
+        //복합대입연산자(*=, -=,/=,%=)
+        let sum= 20;
+        sum=sum+10 
+        //==
+        sum+=10;
+
+        //비교연산자(==,!=,===,<,>,>=,<=) ===은 데이터와 타입까지 비교하는 것
+
+        //논리연산자(&&,||)<<&&먼저 해치우기
+
+        //문자연산자
+        let str0= "yedam"+' '+ 'yedam'+100+100; 
+        //yedam yedam100100(자동형변환으로 인해 문자열로 바뀜)
+        //js ,java에서 순위는 저장공간이 큰 곳이 우선한다 : 문자+(문자형변환)숫자, 실수+(실수형변환)정수;
+        console.log(str0);
+
+        //3항연산자
+        
+
+        //입력받은 세 자리 수의 각 자리 합을 출력(나의 풀이)
+        let number = window.prompt("세 자리 수 입력"); 
+
+        let number1=parseInt(number/100);
+        console.log(number1);
+
+        let number2=parseInt((number-number1*100)/10);
+        console.log(number2);
+        
+        let number3= number-number2*10-number1*100;
+        console.log(number3);
+        
+        number=number1+number2+number3;
+        console.log(number);//콘솔창에 표시
+        window.alert(number);//팝업창으로 표시
+    </script>
+</body>
+</html>

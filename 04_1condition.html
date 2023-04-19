@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // //if문+ifelse문
+        // if(1>2){
+        //     alert("false");
+        // }
+        // if(1<2){
+        //     alert("true");
+        // }
+        // ////////////////
+        // if(1>2){
+        //     alert("false");
+        // }else{
+        //     alert("true");
+        // }
+        
+        ////////////////////////////////////////////시간을 가져오는 기능
+        const date= new Date();
+        const hour=date.getHours();//현재시간
+
+        console.log(hour);//15
+        console.log(date);//Tue Apr 18 2023 15:04:59 GMT+0900 (한국 표준시)
+
+        //삼항연산자
+        console.log(hour<12? "오전":"오후");
+
+
+        //학점매기기
+        let point=prompt("점수를 입력하세요");
+        if(point>=90){
+            console.log("A");
+        }
+        if(point<90 &&point>=80){
+            console.log("B");
+        }
+        if(point<80 &&point>=70){
+            console.log("C");
+        }
+        if(point<70 &&point>=60){
+            console.log("D");
+        }
+        if(point<60){
+            console.log("F");
+        }
+        
+        //학점매기기를 if.elseif.else로 만들기
+        if(point>=90){
+            console.log("A");
+        }else if(point>=80){console.log("B");
+        }else if (point>=70){console.log("C");
+        }else if (point>=60){console.log("D");
+        }else{//else에는 조건없다!!!!
+            console.log("F");
+        }//위랑 아래랑 같음(consolelog안의 내용은 정정필요)
+        if(point<60){
+            console.log("f");
+        }else if(point<70){console.log("d");
+        }else if (point<80){console.log("c");
+        }else if (point<90){console.log("b");
+        }else{//else에는 조건없다!!!!
+            console.log("a");
+        }
+
+        //원하는 데이터만 출력하는 조건문
+        //홀수짝수판단하기
+        let num=prompt("숫자입력");
+
+        if(num%2==0){
+            console.log("짝수");
+        }else{
+            console.log("홀수");
+        }
+
+        //중첩if문
+        //2의 배수이면서 5의 배수인 숫자,
+        let numb=prompt("숫자만 입력하세요");
+        
+        if(numb%2==0){
+            console.log("2의배수");
+            if(numb%5==0){
+                console.log("2의 배수이면서 5의배수인 수 "+numb+" 546를 입력했습니다.");
+            }else{
+                console.log("2의 배수이지만 5의배수는 아님");
+            }
+        }else{
+            console.log("2의배수가 아님");
+        }
+
+        let walkAmount=prompt("하루에 얼마나 걷습니까?");
+        if(walkAmount>10000){
+            document.write("<h1>잘하고 있네요</h1><br>");//document:화면 전체를 의미
+        }
+
+        let userName=prompt("방문자의 이름?");
+
+        if(userName!="smith"){
+            document.write(userName+"님 반갑습니다.");
+        }else{
+            document.write(userName+"님은 나가세요");
+        }
+//////////////////////////////////////////////////////////////////////////////
+        //confirm()확인/취소
+        let result=confirm("정말로 탈퇴하시겠습니까");
+        //confirm팝업창이 뜨고 확인을 누르면 true값이 result에 저장됨, 취소는 false
+        if(result){
+            alert("탈퇴완");
+        }else{
+            alert("탈퇴처리취소")
+        }
+
+        //id.pw확인
+        let id="haha";
+        let pw="1234";
+
+        let userId=prompt("아이디입력");
+        let userPw=prompt("pw입력");
+
+        if(id==userId){
+            if(pw==userPw){
+            document.write(userId+" 님 로그인 되었습니다.");
+        }else{
+            alert(userId+"비밀번호오류");
+            location.reload();///화면새로고침(f5)
+        }
+        }else{
+            alert("id가 없습니다")
+            location.reload();///화면새로고침(f5)
+        }
+
+    </script>
+</body>
+</html>
