@@ -28,16 +28,17 @@
         //////문자열을 활용한 반복문(문제)
         let last=0;
         let number=Number(prompt("숫자입력"));
+        let word;
 
         toString(number);
-        number.substring(number.length-1,number.length);//마지막문자빼어내기
+        last=number.substring(number.length-1,number.length);//마지막문자빼어내기
                 for(i=0;i<number.length-1;i++){
-                    last=substring(number-1, number);
                     if(number>10&&last%3!=0){
-                        substring(0,number.length-1);
+                        word=substring(0,number.length-1);
                     }else{
-                        console.log("*");
+                        word+="*";
                     }
+                    console.log(word);
                 }   
         
                 // if(number>10&&last.endsWith('3'||'6'||'9'){

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            color:red;
+        }
+        .blue{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>cities</h1>
+        <ul>
+            <li id="one" class="red">seoul</li>
+            <li id="two" class="red">london</li>
+            <li id="three" class="red">daegu</li>
+            <li id="four">tokyo</li>
+        </ul>
+    </div>
+    <!-- <div id="test" name="test"></div>/*id for JS&& name for java(spring)   id랑 name 두 개 통일 시키는 것이 조/ -->
+
+    <script>
+        //dom을 선택해서 갖고오기 위해
+        ///////////////////////////////////css 선택자 사용
+        // document.querySelector();//중복된 경우, 최초의 하나만 갖고 옴
+        // document.querySelectorAll();
+        //////////////////////////////////tag, id, class사용
+        // document.getElementById();
+        // document.getElementsByClassName();
+        // document.getElementsByTagName();//ex:div태그를 모도 들고 옴
+        
+        let liTag=document.getElementById('two');//작은따옴표,킁따옴표모두 되네용?
+        console.log(liTag);
+
+        liTag=document.querySelector("li.red");//li태그의 redClass의 돔 중에서 첫번째것만출력;
+        console.log(liTag);
+        liTag=document.querySelector("#three");
+        let el=document.getElementsByClassName("red");//red클래스의 요소가 배열로 출력;
+
+        //요소바꾸기(넣기)
+        // for(let i=0; i<el.length; i++){
+        //     console.log(el[i]);
+        //     el[i].className = 'blue';
+        // }모든 요소가 바뀌지 않음! 왜 el[0]이 blue클래스로 바뀌고 for문으로 올라가면 i는 1로 바뀌고 빨간 클래스 집합인
+        //e//////////////////////////el[0]이 그대로 남아있는 것이 아니라 사라지고, 나머지 요소가 각각 el[0],el[1]로 바뀜
+        ////////////////////////////그래서 바뀐 el[0]은 i=1인 상태서 실행되지 못하고 그대로 남게 됨
+
+        //회피 하는 방법
+        for(let i=el.length-1; i>=0; i--){
+            el[i].className = 'blue';
+        }
+        ///class추가, 삭제
+        let div=document.getElementsByTagName('div');//tagname은 배열로 갖고옴(0번째index:div꼴로 저장)
+        div[0].classList.add('red');
+        //div[0].classList.remove('red');
+        div[0].classList.add('blue');
+
+
+
+
+        el = document.querySelectorAll('li.blue');///끝에서 부터 돌리면 위의 문제는 사라지게 됨
+        console.log(el);
+        for(let i=0;i<el.length;i++){
+            el[i].className='red';
+        }
+        //////////////////////////////////////////////////////////////for..in -> 배열의 인덱스를 끝까지 호출
+        for(let i in el){
+            console.log(i);
+        }
+
+        /////////////////////////////////////////////////////////////for..of -> 배열의 요소(data)를 호출
+        for(let i of el){//el==element;
+            console.log(i)
+        }
+        el= document.getElementsByTagName('li');//따옴표필수
+        ///document==모든 태그(<html>,<head>,<p>...의 조상
+        for(let i of el){
+            console.log(i);
+        }
+
+        ///////////////////////////////////////////가족찾기 문제////////////////////////
+        let dommy=document.querySelector("#two");
+        console.log(dommy);//#two
+        console.log(dommy.parentNode);////////부모요소찾기/////////////
+
+        dommy.parentNode.className='blue';//parentNode==ul태그
+        //ul의 class가 blue로 바뀌어도 li 중에서 inline으로 class가 red로 잡혀있는 것은 그것이 (css의)우선순위라 안먹힘
+        dommy.parentNode.className='blue';
+        console.log(dommy.parentNode.firstElementchild);
+        dommy.parentNode.firstElementChild.textContent="서울";//1 DOM 요소안에 있는 모든 텍스트 읽고 쓰기(display:none 등을 포함)
+            //ul             #one           text로 바꿈
+        dommy.parentNode.firstElementChild.innerHTML="서울";//2  DOM 요소(예:태그) + 텍스트 읽고 쓰기
+        dommy.parentNode.firstElementChild.innerText="서울";//3   DOM 요소안에 있는 텍스트 읽고 쓰기(display:none을 포함x)
+////////1,2,3 모두 같은 결과 출력_00.text.html파일 참조/////
+
+        //////////////////////////자식요소찾기///////////////////
+        console.log(dommy.parentNode.childNodes)//           텍스트까지포함
+        console.log(dommy.parentNode.children)//자식태그를(?????) 배열로 저장
+        console.log(dommy.parentNode.children[3])//4번째자식
+
+        console.log(dommy.parentNode.parentNode.parentNode.parentNode.parentNode);//중첩해서 사용가능
+        //#document출력. 그 위로 더 가면 null나옴 li>ul>div>body>head>document
+        /////////형제요소찾기////////////
+        dom=document.getElementById("two");
+        console.log(dommy.nextElementSibling);
+        console.log(dommy.previousElementSibling);
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

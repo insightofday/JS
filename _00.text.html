@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDiv">
+        dsljflj
+        <span style="display: none;">hidden text</span>
+    </div>
+    <input type="button" value="innterHTML"onclick="getInnerHTML()">
+    <input type="button" value="innterText"onclick="getInnerText()">
+    <input type="button" value="textContent"onclick="getTextContent()">
+    <script>
+        function getInnerHTML(){//////////////////////////////1
+            let el=document.getElementById('myDiv');
+            alert(el.innerHTML);
+        }
+        function getInnerText(){/////////////////////////////2
+            let el=document.getElementById('myDiv');
+            alert(el.innerText);
+        }
+        function getTextContent(){///////////////////////////3
+            let el=document.getElementById('myDiv');
+            alert(el.textContent);
+        }
+
+
+        //innerHTML = DOM 요소(태그 등) + 텍스트 읽고 쓰기
+        //innerText = DOM 요소안에 있는 텍스트 읽고 쓰기
+        //textContent = DOM 요소안에 있는 모든 텍스트 읽고 쓰기(display:none을 포함)
+
+
+    </script>
+</body>
+</html>

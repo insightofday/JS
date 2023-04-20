@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /////////////////////////////////////////////////////콜백함수(매개변수로 함수가 들어가는 형태)////////////////
+        function callThreeTimes(callback){
+            for(let i=0;i<3;i++){
+                callback(i);
+            }
+        }
+        function print(i){//동기(sync)방식으로 작동됨. print가 작업을 끝내야 탈출함 callback(i)는 부르는 주체.
+                            //print는 응답하는 주체 print가 작업을 끝낼 때 까지 callback이 기다림
+            console.log(i+"번째 함수 호출");
+        }
+        callThreeTimes(print);//callthreetimes에print함수를매개변수로넣음
+
+        
+        
+        //Synchronous(동기식)
+        // Request를 보낸 Thread는 Response가 도착하기 전까지는 아무것도 하지 못하는 Block 상태가 됨을 의미합니다.
+        // Thread는 Request를 보내고 Response를 받고 Request를 다시 보내는 작업을 수행하게 됩니다. 
+        //  요청과 응답값의 순서를 보장하게 됩니다. 또한 보낸 Request에 대한 처리 결과 값을 보장 받을 수 있습니다. 
+        // 이는 요청 값에 대해 성공, 실패 및 처리 결과에 대해 변경되는 사항이 있는 경우엔 굉장히 중요한 요소 입니다.
+
+
+
+        ///////////////////////////콜백함수의 매개변수에 익명함수(함수를 변수에 저장)?? 윗 방식보다 많이 쓰임//////////////////////////////
+        /////////////////////////////////////////////////배열에서 많이 사용됨 (foreach, map, filter)
+        function callThreeTimes(callback){
+            for(let i=0;i<3;i++){
+                callback(i);
+            }
+        }
+        callThreeTimes(function(i){
+            console.log(i+"번째 함수 호출");
+        })//괄호위치 주의!!!
+
+        //////////////////foreach:function(value, index, array(){}:배열의 모든 요소를 출력할 때 까지 반복
+        //value:각 인덱스의 data
+        //index:배열 인덱스
+        //array:배열의 모든 데이터
+        //////세 가지 중 필요한 것만 쓰는 것도 가능
+        let numbers=[2,3,4,464,4534];
+        numbers.forEach(function(el,idx,ary){/////ary는 numbers 전체(그 자체)를 저장함
+            //////////////////데이터,인덱스,배열
+            console.log(idx+"번째 요소 : "+el);
+        })
+
+        ///////////////////////////////////////////////////map:return한 값을 기반으로 새로운 배열 생성
+        numbers=numbers.map(function(el,idx,ary){
+            return el*el;//return값은 배열n번째에 저장됨
+        })
+        console.log(numbers);
+
+        //////////////////////////////////////////////////filter:return값이 true인 것만 모아서 새로운 배열 생성
+        const number=[0,1,2,3,4,5];
+        const evenNumber=number.filter(function(el){
+            return el%2==0&&el!=0;
+        })
+        console.log("원래배열 "+number);
+        console.log("짝수만 추출 "+evenNumber);
+
+///////////////////////////////////////////////////////////////(콜백함수간략하게쓴거)화살표함수////////////////////////////////////
+        // 코드가 1줄이상 넘어갈 때
+        // ()=>{
+        // }
+        // 코드가 1줄 일 때
+        //()=> return 데이터
+
+        const array=[0,1,2,3,4,5,6,7,8,9];
+        
+        array.map((value)=>value*value);
+        // numbers.map(function(el,idx,ary){                          /////////위의 것과 같은 의미
+        //     return el*el;//return값은 배열n번째에 저장됨
+        // })
+        array.forEach((el)=>{
+            console.log(el);
+        })
+        array.filter((value,index)=>{
+            console.log(value+":"+index);
+        })
+
+        /////////////////////////////(제이쿼리에서많이쓰임)method cahining...................!!!!/////////////////////////////////////
+        array
+        .filter((value)=>value%2==0)
+        .map((value)=>value*value)
+        .forEach((value)=>{
+            console.log(value);
+        })
+
+        //////////////////////////////////////////타임아웃(js의내장기능)///////////////////////////////////////////////
+        //setTimeout(특정시간 후에 작동)setInterval(특정시간마다작동)
+        console.log("타이머실습");
+        setTimeout(()=>
+            console.log("1초후에실행됨다."),1*1000)   //1*1000ms는 시간단위
+        
+        let count=0;
+        let id=
+        setInterval(()=>{
+            console.log("1초마다 실행됩니다"+count+"번째");
+            count++;
+        }, 1*1000);
+
+        //clearInterval
+        count=0;
+
+        setTimeout(()=>{
+            console.log("타이머종료");
+            clearInterval(id)
+        },5*1000);
+
+
+        ///filter함수 활용(내풀이)
+        let no=[273,25,75,52,103,32,57,25,56];
+        //홀수추출
+        console.log(no.filter((odd)=>odd%2==1));
+        //100이하의 수 추출
+        console.log(no.filter((odd)=>odd<=100));
+        //5로 나눈 나머지가0인 수
+        console.log(no.filter((odd)=>odd%5==0));
+        
+
+
+
+        
+        
+
+
+    </script>
+</body>
+</html>

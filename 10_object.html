@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //js에서....
+        //!속성!:정보/!메서드!:기능
+        //object={key:value;}
+
+        let product={
+            //속성값 넣기
+            name:"mango",
+            kind:"fruit",
+            color:"yellow",
+            ////메서드 넣기
+            info:function(){
+                return 'name: '+this.name+' kind: '+this.kind+' color:'+this.color;//this가 없으면 범위가 메서드 내로 한정됨
+            }
+        }////////////////this가 객체를 가리키는 것이 아닌 경우: 메서드 안에서 arrow함수 생성한 경우(함수에포함된 함수니까 객체에직접적으로 종속된 게 아니겠죠):this==window
+        ////////////////////////////////////////////메서드 안에서 함수를 생성한 경우(arrow함수와 표현법만 다르니까 당연한거죵?):this==window
+        console.log(product.name);
+        console.log(product.info());
+
+
+        /////////////////////////////////////object동적생성/////////////////////////////////////////////////////
+        let student={};
+        student.name="akjfdl";
+        student.age=20;
+        student.future='papa';
+        console.log(JSON.stringify(student, null, 2));//json타입을 문자열로 바꾼다.stringify(data,??,띄어쓰기)
+/////////////////////////////////////////////!!!!!!!!!!!!!!!!!client와server가 교류를 할 때 ///////////////
+///////JavaScript Object Notation(JSON)///!!!!!!!!!!!!!!!문자열, 배열, json(key:value)방식의 데이터타입을 많이 사용한다./////
+        
+
+
+        //객체의 data삭제
+        delete student.future;
+
+    </script>
+</body>
+</html>
