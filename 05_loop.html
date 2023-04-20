@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // //for문(for, (배열에서 사용됨:for...in, for...of))
+        // //let count=Number(prompt("원하는 값 입력"));
+        // let fac=1;
+        // for(let i=1; i>4 ;i++){
+        //     fac=fac*i;
+        // }
+        // //구구단 2단출력(내풀이)
+        // let count=Number(prompt("원하는 단"));
+        // for(let i=1;i<10;i++){
+        //     console.log(count+"*"+i+"="+count*i);
+        // }
+        // let star='';
+
+        //별 역순찍기(내풀이)
+        // let star='';
+        // for(let i=0;i<5;i++){
+        //     for(let j=5-i;j>=1;j--){
+        //         star+="*";
+        //     }
+        //     star+="\n";
+        // }
+        // console.log(star);
+        
+        //별 역순찍기(쌤풀이1)
+        let star='';
+        for(let i=5;i>=1;i--){
+            for(let j=i;j>=1;j--){
+                star+="*";
+            }
+            star+="\n";
+        }
+    
+        console.log(star);
+        //별 역순찍기(쌤풀이2)
+        star='';
+        for(let i=1;i<=5;i++){
+            for(let j=5;j>=1;j--){
+                star+="*"
+            }
+            star+="\n";
+        }
+        console.log(star);
+
+
+        let star1='';
+        for(let i=1;i<=5;i++){
+            for(let j=i-1; j<i;j++){
+                star1+=" ";
+            }
+            for(let k=1;k<=6-i;k++){
+                star1+="*";
+            }
+            star1+="\n";
+        }
+            
+        console.log(star1);
+
+
+
+
+
+        star='';
+
+        for(let i=1;i<=5;i++){
+            for(let j=1; j<i; j++){
+                star+=" ";
+            }
+            for(let j=1; j<=6-i;j++){
+                star+="*";
+            }
+            star+="\n";
+        }
+        console.log(star);
+    </script>
+</body>
+</html>

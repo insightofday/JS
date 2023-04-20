@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        sum=0;
+        while(true){
+            sum+=1;
+            if(sum==10){
+                break;
+            }
+        }
+        //1~100까지의 수 중에서 짝수만 출력
+        let even=0;
+        while(even<=100){
+            if(even%2==0 && even!=0){
+                console.log(even +"은 짝수입니다.");
+            }
+            even++;
+        }
+        //do while
+        let sum=0;
+        do{
+            sum=sum+1;
+        }while(sum<1);
+
+        let temp=1;
+        do{
+            console.log(temp);
+            temp++
+        }while(temp<=100);
+
+
+    //continue, break
+    sum=0;
+    flag=true;
+    while(flag){
+        sum+=5;
+        // if(sum==10){
+        //     console.log("break 종료");
+        //     break;
+        // }
+        switch(num){
+            case 1:
+                console.log("break종료")
+                flag=false;
+                break;//여기서 break는 switch문 만을 탈출한다. 전체 while문을 탈출하고 싶으면 flag=false;를 통해
+                //탈출해야 한다
+        }
+    }
+
+    for(let i=1;i<=10;i++){
+        console.log(i);
+        if(i==5){
+            break;//!!!!!!!!!!!반복문(for) 전체를 탈출
+        }
+    }
+//짝수인 값만 출력
+    for(let i=1;i<=10;i++){
+        console.log(i);
+        if(i%2==1){
+            continue//!!!!!!반복문 종료}와 같은 격. 다시 반복문의 조건으로 돌아감
+        }
+        console.log(i);
+    }
+
+
+    </script>
+</body>
+</html>

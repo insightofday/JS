@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //!!!!!배열은 참조형 타입!!!!!배열도 객체다!!!!!!!!!!!!!!!
+        //(((js)))에서 배열은 공간을 생성할 때 마다 만들어짐>>제거도 self;
+        
+        let arr=[];//data가 1도 없는 빈 배열 생성
+    //////////////////////데이터 입력//////////////////////////////////////
+        arr.push(100);//데이터 입력(가장 끝에 배치)
+        arr.push("100")
+        console.log(arr);
+
+        arr.unshift(3);//데이터 입력(앞에서부터 배치(기존에 있던 값은 뒤로 밀리겠죵?))
+        arr.unshift("3");
+        console.log(arr);
+    ////////////////////////////////////데이터 삭제//////////////////////////////
+        arr.pop();//데이터 삭제(끝에 것을 삭제)
+        console.log(arr);
+
+        arr.shift();//데이터 삭제(맨 앞의 것을 삭제)
+        console.log(arr);
+
+    /////////////////데이터입력   삭제    변경   다   가능한 것/////////////////////
+        //arr.splice(시작인덱스, 삭제할 요소 길이, 추가할 배열 데이터)
+        arr.splice(0,0,'무지');//0번째인덱스, 삭제x, 무지 데이터 입력
+        console.log(arr);
+        arr.splice(1,0,'개');//기존의 요소가 있더라도 삭제되는 것이 아니라 뒤로 밀려남
+        console.log(arr);
+        //변경(삭제한 자리에 새로운 데이터 입력)
+        arr.splice(1,1,'강와지');
+        console.log(arr);
+        //삭제==splice(시작인덱스, 삭제할 요소의 길이)
+        console.log(arr);
+        arr.splice(0,2);
+        console.log(arr);
+    /////////////////배열의 길이 (데이터의 갯수)///////////////////////////////////
+        let array=[]
+        array.push(2);
+        array.length;
+    ////////////////////////////(인덱스를 활용한)배열 출력//////////////////////////////////
+        //arr[0];
+        //typeof array[n]: number, String
+        //typeof array:object;
+
+
+
+        // //활용(배열+반복문)
+        // for(let i=0;i<10;i++){
+        //     let word=prompt("입력");
+        //     array.push(word);
+        // }
+        // console.log(array);
+
+        //hidden문자를 입력하게 되면 입력을 멈추는 반복문
+        while(true){
+            let word=prompt("데이터입력");
+            if (word=='exit'){
+            alert("answer");
+            break;
+            }array.unshift(word);//입력한 값 다 출력
+        }
+        console.log(array);
+
+
+        ///반복문을 활용해서 최대값을 구하기
+        ary=[1,2,7,54,5,6,1,99,0,2,11];
+        max=0;
+        for(let i=0;i<=ary.length;i++){
+            if(max<ary[i]){
+                max=ary[i];
+            }
+        }
+
+        //반복문을 활용해서 최소값 최댓값을 구하기(내방법)
+        max=0;
+        for(let i=0;i<=ary.length;i++){
+            if(max<ary[i]){
+                max=ary[i];
+            }
+        }
+        console.log(max)
+        let min=ary[0];
+        for(let i=1;i<ary.length;i++){
+            if(min>=ary[i]){
+            min=ary[i];
+            }
+        }console.log(min)
+        
+
+        //최대값과 초소값의 인덱스
+        max=0;
+        min=ary[0];
+        for(let i=0;i<=ary.length;i++){
+            if(max<ary[i]){
+                max=i;
+            }
+        }console.log(max);
+
+        for(let i=0;i<ary.length;i++){
+            if(min>=ary[i]){
+                min=i;
+            }
+            console.log(min)
+        }
+
+        // for(let i=0;i<ary.length;i++){
+        //     if(max<ary[i]){
+        //         max=ary[i]
+        //     }
+        //     for(let i=0;i<ary.length;i++){
+        //         if(max-ary[i]>){
+
+        //         }
+        //     }
+        // }
+        // console.log(min);
+
+        ////////////////////로또번호출력//////////////////////내풀이console.log(math.parseInt(Math.random()*45)+1);
+        let lotto=[];
+        let value=0;
+        for(i=0;i<6;i++){
+            value=(parseInt(Math.random()*45)+1);
+            lotto.push(value);
+            if((lotto[i-1])||(lotto[i-2])||(lotto[i-3])||(lotto[i-4])||(lotto[i-5])==lotto[i]){
+                lotto.splice(i,1,parseInt(Math.random()*45)+1);
+            }
+        }console.log(lotto);
+
+//쌤답
+        lotto=[];
+        for(let i=0; i<6; i++){
+            arr.push(parseInt(Math.random()*45+1));
+        for(let j=0;j<i;j++){
+            if(lotto[i]==lotto[j]){
+                lotto.pop();
+                i--;
+            }
+        }
+        }console.log(lotto);
+
+    </script>
+</body>
+</html>
