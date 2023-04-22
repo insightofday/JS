@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <form id="form" action="_00.text.html"onsubmit="return fnSubmit()">    방법1할때필요한것-->
+    <form id="form" action="_00.text.html">
+    <!-- action:ㅇㅓ느 페이지로 이동? onsubmit:원하는 상황에서+click하면 true -->
+    <label>name<input type="text" id="userId" name="userId"></label>
+    <button>확인</button>
+    </form>
+
+    <script>
+        //input태그 내에 데이터있으면 페이지이동, 없으면 이동x                      방법1
+        function fnSubmit(){
+            alert('submit');
+            let txt=document.getElementById('userId');
+            //input tag에 데이터 존재 유무 확인
+            if (txt.value==''){
+                console.log('no data');
+                //데이터없으니까 submit(페이지이동)작동x
+                return false;
+            }else{//데이터있으면 submit작동함
+                return true;
+            }
+        }
+        
+        let form=document.getElementById('form');//onsubmit에 함수를 추가        방법2
+        form.onsubmit=function(){
+            let txt=document.getElementById('userId');
+            //input tag에 데이터 존재 유무 확인
+            if (txt.value==''){
+                console.log('no data');
+                //데이터없으니까 submit(페이지이동)작동x
+                return false;
+            }else{//데이터있으면 submit작동함
+                return true;
+            }
+        }
+    </script>
+
+
+    <a href="https://www.naver.com" id="abtn" onclick="fnA()">naver</a>
+    <!-- <a href="https://www.naver.com" id="abtn" onclick="if(!confirm('move?')){event.preventDefault()}">naver</a> 
+    위에거랑 똑같음-->
+    <button type="button" id="btn">button</button>
+    <script>
+        let aTag=document.getElementById('abtn');
+
+        aTag.onclick=function(){//확인:true.취소:false를 반환 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!익명function이해하기
+            if(!confirm("move?")){//confirm:확인창 띄우기
+                event.preventDefault();//이벤트중지(여기서의 이벤트는 (a태그기능+onclick기능)click해서 이동)
+            }
+        }
+        function fnA(){
+            if(!confirm('move?')){
+                event.preventDefault();
+            }
+        }
+    </script>
+</body>
+</html>

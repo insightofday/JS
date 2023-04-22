@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>one</p>
+        <p>two</p>
+        <p>three</p>
+        <p>four</p>
+        <p>five</p>
+        <button type="button" onclick="pInfo()">click</button>
+    </div>
+    <script>
+        function pInfo(){
+            console.log(event.target.parentNode.children[0].textContent);//(pInfo의기능)event의 주체가 console에 찍힘;(button태그가 선택됨)
+        }//선택한 button태그를 기반으로 one선택하기(가족찾기) textcontent붙이면 내용이 불려와짐(안하면전체가송환)
+        
+        
+
+
+
+    </script>
+</body>
+</html>

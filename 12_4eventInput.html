@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="input" value="haha" id="id" name="id">
+    <!-- value==input안에 default로 들어와있는 text-->
+    <button type="button" id="btn" onclick="getInfo()">정보추출1</button>
+    <br>
+    <input type="input2" id="id2" name="id2">
+    <button type="button" id="btn2" onclick="getInfo2()">정보추출2</button>
+
+    <p style="border :1px solid red"></p>
+    <script>
+        function getInfo(){//1st input태그의 데이터를 갖고 옴
+            let input=document.getElementById('id');
+            let str=input.value;
+
+            //p태그(dom)갖고와서 데이터 입력
+            let p=document.querySelector('p');
+            p.textContent=str;
+
+            input.value='';
+            input.focus();
+
+        }
+        function getInfo2(){
+            let input=document.querySelectorAll('input')[1];//inputtag중2번째선택
+            let str=input.value;//함수안이 유효범위라 str위에 써도 또 쓰기 ㄱㄴ
+            let p=document.querySelector('p');
+            p.textContent=str;
+        }
+    </script>
+</body>
+</html>

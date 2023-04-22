@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <input type="text"id="txtName">
+    <button type="button">btn</button>
+
+    <script>
+        let btn=document.querySelector('button');
+        btn.addEventListener('click',Fncbtn);
+        btn.addEventListener('click',Fncbtn2);//event2개 걸기 가능(fncbtn,fncbtn2둘 다 됨:조심하자!!)
+        btn.addEventListener('mouseover',Fncbtn2);//마우스 2개 올리면 동작
+        
+        function Fncbtn(){
+            alert('you clicked the button');
+        }
+        function Fncbtn2(){
+            console.log('you clicked the button==text');
+        }
+        
+
+
+
+        let txtName=document.getElementById('txtName');
+        txtName.addEventListener('mouseover',fncTxt);
+        txtName.addEventListener('mouseout',fncTxt2);//커서가 밖으로 나왔을 때
+
+        function fncTxt(){
+            txtName.style.background='yellow';
+        }
+        function fncTxt2(){
+            txtName.style.background='white';
+        }
+
+
+
+        txtName.addEventListener("change",fncChange);//txt안의값(데이터) 변경될때마다 이벤트의 매개변수내의 함수실행
+        function fncChange(){
+            console.log("changed");
+        }
+
+    </script>
+</body>
+</html>
