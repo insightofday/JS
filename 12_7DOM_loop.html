@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            background-color: brown;
+            color:white;
+            font-size:10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        
+    </div>
+    <script>
+        let span=document.createElement('span');
+        span.classList.add('red');//클래스추가
+        span.setAttribute('id','sp1');//id지정
+        span.textContent="span입니다";
+
+        let h2= document.createElement('h2');
+        h2.textContent="h2텍스트입니다";
+
+        let img=document.createElement('img');
+        img.setAttribute('src','어쩌고.jpg');
+        img.setAttribute('alt','안나옴');
+        img.style.height='100px';
+
+        let ul=document.createElement('ul');
+
+        for(let i=0;i<3;i++){
+            let li=document.createElement('li');
+            li.classList.add('red');
+            li.textContent=`텍스트${i}`;
+            ul.append(li);
+        }
+
+        let div=document.getElementById('app');
+        div.appendChild(span);
+        div.appendChild(h2);
+        div.appendChild(img);
+        div.appendChild(ul);
+
+    </script>
+</body>
+</html>

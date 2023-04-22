@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    *{
+        font-family: sans-serif;
+    }
+    #list{
+        border: 1px dotted white;
+        text-align: left;
+        font-size: 20px;
+        background-color: blueviolet;
+        color: white;
+        width: 63.5vw;
+    }
+    #history{
+        margin-top: 30px;
+        border: 1px dotted white;
+        text-align: left;
+        font-size: 20px;
+        background-color: gray;
+        color: white;
+        width: 63.5vw;
+    }
+    button{
+        background-color: black;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    p{
+        font-size : 15px;
+    }
+    </style>
+</head>
+<body>
+    <h1>To do List</h1>
+    <input type="text" id="doList" name="doList" style="width: 50vw">
+    <!-- vW:화면의 가로길이중 약 50%(반응형) -->
+    <button type="button" onclick="saveList()">ListUp</button>
+    <button type="button" onclick="deleteItem()">DELETE</button>
+    <br><br>
+    <h2>DONE LIST</h2>
+    <div id="list">
+
+    </div>
+
+    <h2>HISTORY</h2>
+    <div id="HISTORY">
+
+    </div>
+
+    <script>
+        function saveList(){
+            let doList=document.getElementById('doList')//input DOM가져오기
+            let p=document.createElement('p');
+            p.textContent=doList.value;
+
+            let list=document.getElementById('list');//Donelist하단공간
+            list.appendChild(p);
+
+            let ckb=document.createElement('input');
+            ckb.setAttribute('type','checkbox');
+            
+            p.prepend(ckb);//앞으로 넣기, append로 하면 글씨뒤로 체크박스가 옴
+
+            let btn=document.createElement('button');
+            btn.textContent='complete';
+            
+            //속성추가(dolist에서history로 이동)
+            btn.setAttribute('onclick','move()');
+            btn.setAttribute('type','button');
+
+            p.appendChild(btn);
+            
+        }
+        function move(){
+            checkedToggle(event.target);
+            let history=document.getElementById('history');
+            event.target.textContent='History';
+            event.target.setAttribute('onclick','before()');
+            HISTORY.appendChild(event.target.parentNode);//(ptag를가리킴)복사하는 것이 아니라 이동되는 것
+
+        }
+        function before(){
+            checkedToggle(event.target);
+            let list=document.getElementById('list');
+            event.target.setAttribute('onclick','move()');//list로 올라가면 move()함수로 다시 바뀌어야 함
+            event.target.textContent='Complete';
+            list.appendChild(event.target.parentNode);
+        }
+        function deleteItem(){
+            let ckb=document.querySelectorAll('input[type=checkbox]:checked');
+            //기본반복문을 활용한 함수구현
+            for(let i=0;i<ckb.length;i++){
+                ckb[i].parentNode.remove();
+            }
+
+            //for of을 활용한 함수구현(데이터를 갖고옴)
+            for(let i of ckb){
+                i.parentNode.remove();
+            }
+
+            //forin을 활용한 함수구현(인덱스를 갖고옴)
+            for(let i in ckb){
+                ckb[i].parentNode.remove();
+            }
+
+        }
+
+        function checkedToggle(ckb){//p태그가 이동될 때 checked가 해제되도록 기능하는 함수.checked(true)unchecked(false)
+            ckb.parentNode.children[0].checked=false;;//children은 dom이나 tag를 찾는것. 비슷한 것으로는 previousSibiling이 있음
+            
+        }
+    </script>
+</body>
+</html>
