@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label> 아이디 :</label>
+    <input
+      type="text"
+      id="id"
+      name="name"
+      placeholder="아이디를 입력하세요(10자 이상)"
+    />
+    <button type="button" id="btn" onclick="confirmInfo()">확인</button>
+
+    <label> 비밀번호 : <input type="password" id="pw" name="pw" /> </label>
+    <button type="button" id="pwBtn" onclick="pwInfo()">확인</button>
+    <br />
+
+    <label> 주소<input type="text" id="addr" name="addr" /></label>
+    <button type="button" id="addrBtn" onclick="addrInfo()">확인</button>
+
+    <button type="button" id="saveBtn" onclick="saveInfo()">회원가입</button>
+
+    <div id="app" style="border: 1px solid green"></div>
+
+    <script>
+      function saveInfo() {
+        let id = document.getElementById("id").value;
+        let pw = document.getElementById("pw").value;
+        let addr = document.getElementById("addr").value;
+
+        let span = document.createElement("span");
+        span.innerHTML = `${id}${pw}${addr}`; //br이라는 태크를 쓰려면 innerHTML사용해야 함
+        document.getElementById("app").append(span);
+        let btn = document.createElement("button");
+        btn.innerHTML = "delete";
+        btn.setAttribute("onclick", "removeBtn()");
+        document.getElementById("app").append(btn);
+        let br = document.createElement("br");
+
+        document.getElementById("app").append(br);
+        //data delete
+        document.getElementById("id").value = "";
+        document.getElementById("pw").value = "";
+        document.getElementById("addr").value = "";
+      }
+
+      function removeBtn() {
+        //버튼클릭하면자기자신과형제를 지우기
+        event.target.nextElementSibling.remove();
+        event.target.previousElementSibling.remove();
+        event.target.remove();
+        // event.target.parentNode.remove();는 윗단위 삭제
+        console.log(event.target.nextElementSibling); //<br>
+        console.log(event.target.previousElementSibling); //<span>어쩌고</span>
+        //remove메서드만 업으면 둘 다 출력 정상적으로 됨
+      }
+    </script>
+  </body>
+</html>
