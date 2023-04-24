@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="select" id="select" onclick="check()">
+        <option>java</option>
+        <option>HTML</option>
+        <option>CSS</option>
+        <option>JS</option>
+        <option>Oracle</option>
+        <option>Python</option>
+    </select>
+    <section id="section-sample">
+        <div id="div-sample">
+            <input type="button" value="click">
+            <button id="btn">click22</button>
+        </div>
+    </section>
+    <script>//쿼리셀렉터(선택자)
+        let section=document.getElementById('section-sample');
+        let div=document.querySelector('#div-sample');
+        let btn=document.querySelector('#div-sample>input[type="button"]');
+        let btn2=document.getElementById('btn');
+
+        function printThis(){
+            console.log(this);//window객체가 뜸
+        }
+        btn2.onclick=printThis;//printThis가 btn2로 바뀜
+
+
+
+        
+        section.addEventListener('click',event=>{
+            alert('section click');
+        })
+        div.addEventListener('click', event=>{
+            alert('div click');
+            //div까지만 출력하고 이벤트전파를 중단하기 위해서는 event.stopPropagation();쓰기
+        })
+        btn.addEventListener('click',e=>{
+            alert('button click');
+            //이벤트전파를 중단하기 위해서는 event.stopPropagation();쓰기
+        })
+        ////버튼1나만클릭했는데 조상alert까지 실행됨(버블링:이벤트의 전파)
+    </script>
+    <script>
+        function check(){
+            //console.log(event.target)//#select가 선택됨
+            console.log(event.currentTarget.options);//개발자도구의 selectedIndex에 option의 인덱스가 나타남
+            console.log(event.currentTarget.options.selectedIndex);//selectedindex만콕찝어서나옴(숫자로나오겟죵)
+            console.log(event.target.options.length);//옵션전체의길이
+            console.log(event.target.options[2]);
+
+            let p=document.createElement('p');
+            p.textContent=(event.currentTarget.options[event.currentTarget.options.selectedIndex]).textContent;
+            /////////////////////////////////////////////////////////////////////////textContent로 문자만 추출!!!!
+            document.body.append(p);
+
+
+            //event의 전파
+            //ㄴ버블링현상:자손의 onclick을 실행했는데 부모의 이벤트까지 실행되는 것
+            //ㄴ캡처링현상:조상의 onclick이 자손까지 실행되는 것
+            
+            //event.currentTarget:이벤트를 걸어놓은 대상(onclick이 있는 곳)
+            //event.target:클릭한 대상
+        }
+    </script>
+</body>
+</html>
