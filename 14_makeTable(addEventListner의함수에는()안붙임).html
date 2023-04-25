@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- 동적테이블만둘기 -->
+<div>
+    이름:<input type="text" id="name" name="name"><hr>
+    국어:<input type="text" id="kor" name="kor"><br>
+    영어:<input type="text" id="eng" name="eng"><br>
+    수학:<input type="text" id="math" name="math">
+    <button type="button" id="btn" name="btn">insert</button>
+    <button type="button" id="btn2" name="btn2">total</button><hr>
+</div>
+    <table style="border:1px dotted gray">
+        <thead>
+            <th>이름</th>
+            <th>국어</th>
+            <th>영어</th>
+            <th>수학</th>
+            <th>total</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    
+    <script>
+        let btn=document.getElementById('btn');
+        btn.addEventListener('click', addToTable);//익명함수로는 만들어지지 않는 점에서 안의 내용보다 다른 것을 유념해서 ㄷ봐야할듯
+
+        function addToTable(){
+            let name=document.getElementById('name');
+            let kor=document.getElementById('kor');
+            let eng=document.getElementById('eng');
+            let math=document.getElementById('math');
+
+            let tbd=document.querySelector('table > tbody');
+            
+
+            let nTd=document.createElement('td');
+            nTd.textContent=name.value;//name input
+
+            let kTd=document.createElement('td');
+            kTd.textContent=kor.value;//korean input
+
+            let eTd=document.createElement('td');
+            eTd.textContent=eng.value;//english input
+
+            let mTd=document.createElement('td');
+            mTd.textContent=math.value;//math input
+
+            let tr=document.createElement('tr');
+            tr.append(nTd, kTd, eTd, mTd);
+            console.log(tr);
+
+            tbd.append(tr);
+            console.log(tbd);
+        
+        }
+
+        // let btn2=document.getElementById('btn2');
+        // btn2.addEventListener('click',totalInput(){
+        //     let tbd=document.querySelector('table > tbody')
+
+        //     for(let i=0; i<=datalist.length; i++){
+        //         let total=document.createElement('td')
+        //         total.textContent=datalist[i].value;
+        //         .append(total);
+        //     }
+        // })
+    </script>
+</body>
+</html>

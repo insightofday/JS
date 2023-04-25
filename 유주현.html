@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:5px;
+
+        }
+        .label{
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+        }
+        .line{
+            border: 1px black dotted;
+            margin-top:5px;
+        }
+        .input{
+            width: 500px;
+        }
+        table{
+            /* border: 1px blue solid */
+        }
+        th{
+            width: 100px;
+            border: none;
+            background-color: black;
+        }
+        .long{
+            width: 150px;
+
+        }
+        thead{
+            background-color: black; 
+            color: white;
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+    <hr color="red">
+    <label style="background-color: yellow;" class="label">도서코드</label>
+    <input type="text" id="code" name="code" class="input"><br>
+    <label style="background-color: yellow;" class="label">도서명  </label>
+    <input type="text" id="name" name="name" class="input"><br>
+    <label style="background-color: yellow;" class="label">저자  </label>
+    <input type="text" id="author" name="author" class="input"><br>
+    <label style="background-color: yellow;" class="label">출판사 </label>
+    <input type="text" id="company" name="company" class="input"><br>
+    <label style="background-color: yellow;" class="label">금액  </label>
+    <input type="text" id="price" name="price" class="input"><br>
+    <button type="button" id="add1" name="add" onclick="create()" class="right">저장</button>
+    <button type="button" id="delete" name="delte" class="right" onclick="selectdelete()">선택삭제</button>
+    <br>
+
+    
+    <table>
+        <thead >
+        <th><input type="checkbox" id="checkall" name="checkall"></th>
+        <th>도서코드</th>
+        <th class="long">도서명</th>
+        <th>저자</th>
+        <th>출판사</th>
+        <th>가격</th>
+        <th>삭제</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        //thead의 checkbox선택시 전체선택
+        document.getElementById('checkall')
+
+        //input값을 표에 넣기
+        
+        // let add1=document.getElementById('add1')
+        // add1.addEventListner("click", event=>{  
+        //     let code=document.getElementById('code').value;
+        //     let name=document.getElementById('name').value;
+        //     let author=document.getElementById('author').value;
+        //     let company=document.getElementById('company').value;
+        //     let price=document.getElementById('price').value;
+
+        //     let p=document.createElement('p');
+        //     p.append(code, name, author, company)})
+            
+        function create(){ 
+            //let zerotd=document.createElement('td');
+            let zerotd=document.createElement('input')
+            zerotd.setAttribute('type','checkbox')
+            //zerotd=zerotd.append(ckb)
+            console.log(zerotd)
+
+            //zerotd.innerHTML=ckb.setAttribute('type','checkbox')
+
+            let firsttd=document.createElement('td');
+            firsttd.textContent=document.getElementById('code').value;
+            
+            let secondtd=document.createElement('td');
+            secondtd.textContent=document.getElementById('name').value;
+
+            let thirdtd=document.createElement('td');
+            thirdtd.textContent=document.getElementById('author').value;
+
+            let fourthtd=document.createElement('td');
+            fourthtd.textContent=document.getElementById('company').value;
+
+            let fifthtd=document.createElement('td');
+            fifthtd.textContent=document.getElementById('price').value;
+
+            //let lasttd=document.createElement('td');
+            let lasttd=document.createElement('input')
+            //lasttd.setAttribute('name','삭제');
+            lasttd.setAttribute('type','button')
+            lasttd.setAttribute("onclick","deleteline()")
+            lasttd.innerHTML='삭제'
+            //lasttd=lasttd.append(input)
+
+
+            let tr=document.createElement('tr');
+            tr.setAttribute('class','line')
+            tr.append(zerotd, firsttd, secondtd, thirdtd, fourthtd, fifthtd)
+            tr.append(lasttd)
+            document.querySelector('table > tbody').append(tr);
+        }
+       
+        function selectdelete(){
+            
+        }
+
+        function deleteline(){
+            event.target.parentNode.parentNode.remove();
+        }
+
+    </script>
+</body>
+</html>
