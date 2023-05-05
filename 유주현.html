@@ -1,143 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        *{
-            margin:5px;
-
-        }
-        .label{
-            display: inline-block;
-            width: 200px;
-            text-align: center;
-        }
-        .line{
-            border: 1px black dotted;
-            margin-top:5px;
-        }
-        .input{
-            width: 500px;
-        }
-        table{
-            /* border: 1px blue solid */
-        }
-        th{
-            width: 100px;
-            border: none;
-            background-color: black;
-        }
-        .long{
-            width: 150px;
-
-        }
-        thead{
-            background-color: black; 
-            color: white;
-            border: none;
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>과제</title>
 </head>
-<body>
-    <hr color="red">
-    <label style="background-color: yellow;" class="label">도서코드</label>
-    <input type="text" id="code" name="code" class="input"><br>
-    <label style="background-color: yellow;" class="label">도서명  </label>
-    <input type="text" id="name" name="name" class="input"><br>
-    <label style="background-color: yellow;" class="label">저자  </label>
-    <input type="text" id="author" name="author" class="input"><br>
-    <label style="background-color: yellow;" class="label">출판사 </label>
-    <input type="text" id="company" name="company" class="input"><br>
-    <label style="background-color: yellow;" class="label">금액  </label>
-    <input type="text" id="price" name="price" class="input"><br>
-    <button type="button" id="add1" name="add" onclick="create()" class="right">저장</button>
-    <button type="button" id="delete" name="delte" class="right" onclick="selectdelete()">선택삭제</button>
-    <br>
+<style>
+  h1{
+    text-align: center;
+  }
+  table{
+    width: 1000px;
+  }
+  body{
+    width: 1000px;
+    text-align: center;
+  }
+  *{
+    margin: 0 auto;
+  }
+  ul{
+    background-color: black;
+    color:white;
+    list-style: none;
+    padding: 10px;
+    float: left;
+    padding-right: 500px;
+  }
+  li{
+    margin: 5px;
+    position: relative;
+  }
+  span{
+    display: inline-block;
+    width: 80px;
+  }
 
+  input{
+    background-color: white;
+    width: 300px;
+    display: inline-block;
+  }
+
+  table{
+    border: solid black 1px;
+    border-collapse: collapse;
+  }
+  .line{
+    border: solid black 1px;
+  }
+  button{
+    border-radius: 20%;
+    padding: 2px,50px;
+    float: right;
+    margin:15px;
+    border: solid 1px black;
+    background-color: white;
+  }
+.bg{
+  padding: 1000px;
+  background-color: black;
+}
+td{
+  padding: 5px;
+}
+
+</style>
+<body id="body">
+  <h1>Insert Member Info</h1>
+  <div id="bg">
+  <ul>
+    <li><span>아이디</span><input type="text" id="id" name="id"></li>
+    <li><span>비밀번호</span><input type="password" id="pw" name="pw"></li>
+    <li><span>주소</span><input type="text" id="adrs" name="adrs"></li>
+    <li><span>이메일</span><input type="email" id="email" name="emiail"></li>
+    <li><span>생년월일</span><input type="date" id="date" name="date"></li>
     
-    <table>
-        <thead >
-        <th><input type="checkbox" id="checkall" name="checkall"></th>
-        <th>도서코드</th>
-        <th class="long">도서명</th>
-        <th>저자</th>
-        <th>출판사</th>
-        <th>가격</th>
-        <th>삭제</th>
-        </thead>
-        <tbody>
+  </ul>
+  <button type="button" id="save" name="save" onclick="insert()">저장</button>
+</div>
+  <table id="list">
+    <thead>
+    <th class="head">아이디</th>
+    <th class="head">비밀번호</th>
+    <th class="head">주소</th>
+    <th class="head">이메일</th>
+    <th class="head">생년월일</th>
+  </thead>
+  
+  <tbody id="tb">
+  </tbody>
+  
+  </table>
+  
+  <script>
+    function insert(){
+  // ////tr을 만들고 td을 tr속에 넣어야 한다.  
+  //   let row=document.createElement('tr');
 
-        </tbody>
-    </table>
-    <script>
-        //thead의 checkbox선택시 전체선택
-        document.getElementById('checkall')
+  //   let contents=document.createElement('td');
 
-        //input값을 표에 넣기
-        
-        // let add1=document.getElementById('add1')
-        // add1.addEventListner("click", event=>{  
-        //     let code=document.getElementById('code').value;
-        //     let name=document.getElementById('name').value;
-        //     let author=document.getElementById('author').value;
-        //     let company=document.getElementById('company').value;
-        //     let price=document.getElementById('price').value;
+  //   let content=row.append(contents);
+    
+  //   let id=document.getElementById('id').value;
+  //   let rid=document.createElement('td').append(id);
 
-        //     let p=document.createElement('p');
-        //     p.append(code, name, author, company)})
-            
-        function create(){ 
-            //let zerotd=document.createElement('td');
-            let zerotd=document.createElement('input')
-            zerotd.setAttribute('type','checkbox')
-            //zerotd=zerotd.append(ckb)
-            console.log(zerotd)
-
-            //zerotd.innerHTML=ckb.setAttribute('type','checkbox')
-
-            let firsttd=document.createElement('td');
-            firsttd.textContent=document.getElementById('code').value;
-            
-            let secondtd=document.createElement('td');
-            secondtd.textContent=document.getElementById('name').value;
-
-            let thirdtd=document.createElement('td');
-            thirdtd.textContent=document.getElementById('author').value;
-
-            let fourthtd=document.createElement('td');
-            fourthtd.textContent=document.getElementById('company').value;
-
-            let fifthtd=document.createElement('td');
-            fifthtd.textContent=document.getElementById('price').value;
-
-            //let lasttd=document.createElement('td');
-            let lasttd=document.createElement('input')
-            //lasttd.setAttribute('name','삭제');
-            lasttd.setAttribute('type','button')
-            lasttd.setAttribute("onclick","deleteline()")
-            lasttd.innerHTML='삭제'
-            //lasttd=lasttd.append(input)
+  //   console.log(rid)
+  //   console.log(id)
 
 
-            let tr=document.createElement('tr');
-            tr.setAttribute('class','line')
-            tr.append(zerotd, firsttd, secondtd, thirdtd, fourthtd, fifthtd)
-            tr.append(lasttd)
-            document.querySelector('table > tbody').append(tr);
-        }
-       
-        function selectdelete(){
-            
-        }
+  //   //let gg=row.append(document.createElement('td')).append(id);
+  //   //console.log(gg);
+    
+  //   let pw=document.getElementById('pw').value;
+  //   let rpw=document.createElement('td').append(id);
+    
+  //   let adrs=document.getElementById('adrs').value;
+  //   let radrs=document.createElement('td').append(adrs); 
 
-        function deleteline(){
-            event.target.parentNode.parentNode.remove();
-        }
+  //   let email=document.getElementById('email').value;
+  //   let rmail=document.createElement('td').append(email); 
+  
+  //   let date=document.getElementById('date').value;
+  //   let rdate=document.createElement('td').append(date); 
 
-    </script>
+  //   row.append(rpw, radrs, rmail, rdate);
+
+
+
+
+      // let trow=document.getElementById('tb');
+      // console.log(trow)
+
+
+      // let row=document.createElement('tr');
+
+      // let data1=document.createElement('td')
+      // console.log(data1);
+
+
+      // trow.append(document.getElementById('id').value);
+      // trow.append(document.getElementById('pw').value);
+      // trow.append(document.getElementById('adrs').value);
+      // trow.append(document.getElementById('email').value);
+      // trow.append(document.getElementById('date').value);
+
+      
+      // row.append(trow);
+
+      // console.log(row);
+      let tr=document.createElement('tr');
+      document.getElementById('tb').append(tr);
+
+      let td1=document.createElement('td');
+      let td2=document.createElement('td');
+      let td3=document.createElement('td');
+      let td4=document.createElement('td');
+      let td5=document.createElement('td');
+
+      let id=document.getElementById('id').value;
+      let pw=document.getElementById('pw').value;
+      let adrs=document.getElementById('adrs').value;
+      let email=document.getElementById('email').value;
+      let date=document.getElementById('date').value;
+
+      console.log(id);
+      
+      td1.textContent=id;
+      td2.textContent=pw;
+      td3.textContent=adrs;
+      td4.textContent=email
+      td5.textContent=date;
+
+      tr.setAttribute('class','line')
+      tr.append(td1,td2,td3,td4,td5)
+
+  
+      
+      
+    }
+
+  </script>
 </body>
 </html>
